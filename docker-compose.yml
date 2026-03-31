@@ -1,0 +1,26 @@
+services:
+  gpu-kuznechic:
+    build: ./gpu-kuznechic
+    ports:
+      - "3100:5000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+    volumes:
+      - ./cupy_cache:/root/.cupy/kernel_cache
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - gpu-kuznechic-net
+    restart: unless-stopped
+
+networks:
+  gpu-kuznechic-net:
+    driver: bridge
