@@ -128,7 +128,7 @@ gpu-kuznechic/
 **Требования**: Docker + NVIDIA Container Toolkit, GPU с compute capability ≥ 8.6 (RTX 30xx).
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/kuznyechik-gpu
+git clone https://github.com/KamilTheFox/KuznechicInGPU
 cd kuznyechik-gpu
 
 # Генерируем T-tables (один раз)
